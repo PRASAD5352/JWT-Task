@@ -1,0 +1,45 @@
+﻿@model MontCrest_Task_ClietSide.Models.StudentRegistration
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SIndex</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-9 text-center">
+            <h1 style="text-align:center">Welcome To Student Profile</h1><br />
+            <input type="button" class="btn btn-danger" value="LOG OUT" onclick="window.location.href='@Url.Action("Logout","DashBoard")'" />
+        </div>
+        <div class="col-md-3">
+            <img src="../Profilephotos/@Model.Profile" height="200px" width="200px" />
+        </div>
+    </div><hr />
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <td>@Model.Fname @Model.Lname</td>
+            </tr>
+            <tr>
+                <th>Email Address</th>
+                <td>@Model.Email</td>
+            </tr>
+            <tr>
+                <th>Mobile Number</th>
+                <td>@Model.Mobile</td>
+            </tr>
+            <tr>
+                <th>Adhar Number</th>
+                <td>@Model.Adharno</td>
+            </tr>
+        </thead>
+    </table>
+</body>
+</html>

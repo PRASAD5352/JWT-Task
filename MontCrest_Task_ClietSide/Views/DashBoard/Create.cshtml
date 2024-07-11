@@ -1,0 +1,68 @@
+﻿@model MontCrest_Task_ClietSide.Models.Student
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+
+    </script>
+</head>
+<body>
+    <form action="Create" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <table>
+            <tr>
+                <td>First Name</td>
+                <td>@Html.TextBoxFor(e => e.Fname)</td>
+                <td style="color:red">@Html.ValidationMessageFor(e => e.Fname)</td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>@Html.TextBoxFor(e => e.Lname)</td>
+                <td style="color:red">@Html.ValidationMessageFor(e => e.Lname)</td>
+            </tr>
+            <tr>
+                <td>Email Address</td>
+                <td>@Html.TextBoxFor(e => e.Email)</td>
+                <td style="color:red">@Html.ValidationMessageFor(e => e.Email)</td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td>@Html.PasswordFor(e => e.Password)</td>
+                <td style="color:red">@Html.ValidationMessageFor(e => e.Password)</td>
+            </tr>
+            <tr>
+                <td>Mobile Number</td>
+                <td>@Html.TextBoxFor(e => e.Mobile)</td>
+                <td style="color:red">@Html.ValidationMessageFor(e => e.Mobile)</td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>@Html.TextAreaFor(e => e.Address)</td>
+                <td style="color:red">@Html.ValidationMessageFor(e => e.Address)</td>
+            </tr>
+            <tr>
+                <td>Adhar No</td>
+                <td>@Html.TextBoxFor(e => e.Adharno)</td>
+                <td style="color:red">@Html.ValidationMessageFor(e => e.Adharno)</td>
+            </tr>
+            <tr>
+                <td>Profile Photo</td>
+                <td><input type="file" name="photo" /></td>
+                <td><h3 style="color:red">@ViewBag.msg</h3></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="SUBMIT" /></td>
+                <td><input type="button" value="Login" onclick="window.location.href='@Url.Action("Index","Login")'" /></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

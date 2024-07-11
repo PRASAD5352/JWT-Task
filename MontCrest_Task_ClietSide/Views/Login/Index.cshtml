@@ -1,0 +1,58 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btnlogin").click(function () { Checklogin(); });
+        })
+        function Checklogin()
+        {
+            var email = $("#email").val();
+            var pass = $("#pass").val();
+            var url = '@Url.Action("SIndex", "DashBoard")' + '?email=' + encodeURIComponent(email);
+            var st = "username=" + email + "&password=" + pass + "&grant_type=password";
+            $.ajax({
+                url: 'https://localhost:44385/token',
+                method: 'post',
+                data: st,
+                success: function (resp) {
+                    localStorage.setItem("token", resp.access_token);
+                    window.location.href = url;
+
+        },
+                error: function (err) {
+                    $("#msg").html("Invalid Employee or Password");
+        }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <td>User Email</td>
+                <td><input type="text" id="email" /></td>
+            </tr>
+            <tr>
+                <td>User Password</td>
+                <td><input type="password" id="pass" /></td>
+            </tr>
+            <tr>
+                <td><input type="button" id="btnlogin" value="Login" /></td>
+                <td><input type="button" id="btnlogin" value="Register" onclick="window.location.href='@Url.Action("Create","DashBoard")'" /></td>
+            </tr>
+        </table>
+        <h2 id="msg" style="color:red"></h2>
+    </div>
+</body>
+</html>
